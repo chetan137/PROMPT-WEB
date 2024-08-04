@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Register</title>
+</head>
+
+<body>
+    <h2>Register</h2>
+    <form action="/users/register" method="POST">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <label for="category">Category:</label>
+        <select id="category" name="category" required>
+            <option value="student">Student</option>
+            <option value="professional">Professional</option>
+            <option value="parent">Parent</option>
+        </select>
+        <button type="submit">Register</button>
+    </form>
+</body>
+
+</html>

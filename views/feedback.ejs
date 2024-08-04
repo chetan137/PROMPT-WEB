@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Feedback</title>
+</head>
+
+<body>
+    <% if (isCorrect) { %>
+        <h2>Correct!</h2>
+        <% } else { %>
+            <h2>Incorrect. The correct prompt is: <%= correctPrompt %>
+            </h2>
+            <% } %>
+                <p>Optimal Prompt: <%= optimalPrompt %>
+                </p>
+                <a href="/questions?userId=<%= userId %>&round=<%= nextRound %>">Next Question</a>
+                <% if (userProgress>= 10) { %>
+                    <a href="/certificate/download?userId=<%= userId %>">Download Certificate</a>
+                    <a href="/tools/recommendations?userId=<%= userId %>">Get AI Tool Recommendations</a>
+                    <% } %>
+</body>
+
+</html>

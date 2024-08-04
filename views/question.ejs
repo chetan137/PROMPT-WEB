@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Question</title>
+</head>
+
+<body>
+    <h2>Round <%= question.round %>
+    </h2>
+    <p>
+        <%= question.questionText %>
+    </p>
+    <form action="/questions/check" method="POST">
+        <input type="hidden" name="questionId" value="<%= question._id %>">
+        <input type="hidden" name="userId" value="<%= userId %>">
+        <label for="userPrompt">Your Prompt:</label>
+        <textarea id="userPrompt" name="userPrompt" required></textarea>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+
+</html>

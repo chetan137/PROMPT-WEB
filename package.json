@@ -1,0 +1,32 @@
+{
+  "name": "prompt",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@google/generative-ai": "^0.16.0",
+    "body-parser": "^1.20.2",
+    "config": "^3.3.12",
+    "cookie": "^0.6.0",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "gemini-api": "^2.0.4",
+    "i18next": "^23.12.2",
+    "i18next-express-middleware": "^2.0.0",
+    "i18next-fs-backend": "^2.3.2",
+    "mongoose": "^8.5.2",
+    "nodemon": "^3.1.4",
+    "path": "^0.12.7",
+    "pdfkit": "^0.15.0",
+    "Router": "^2.1.0"
+  },
+  "devDependencies": {},
+  "keywords": [],
+  "description": ""
+}
