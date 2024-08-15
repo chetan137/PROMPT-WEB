@@ -3,6 +3,7 @@ const User = require('../models/User');
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 const config = require('../config');
 const i18next = require('../server/i18n');
+
 const genAI = new GoogleGenerativeAI(config.GEMINI_API_KEY);
 const model = genAI.getGenerativeModel({
   model: 'gemini-1.5-flash',
@@ -11,15 +12,19 @@ const model = genAI.getGenerativeModel({
 
 exports.getQuestion = async (req, res) => {
   const { userId, round } = req.query;
+
   try {
     const user = await User.findById(userId);
     if (!user) {
       return res.status(404).send('User not found');
     }
-    const question = await Question.findOne({ round, category: user.category });
+
+    // Fetch question specific to the user
+    const question = await Question.findOne({ round, userId: user._id }); // Ensures the question is associated with the user
     if (!question) {
       return res.status(404).send('Question not found');
     }
+
     res.render('question', { question, userId });
   } catch (error) {
     console.error('Error fetching question:', error);
@@ -28,32 +33,44 @@ exports.getQuestion = async (req, res) => {
 };
 
 exports.generateQuestions = async (req, res) => {
-  const { category, rounds } = req.body;
+  const { category, rounds, userId } = req.body;
+
+  const resMock = res || {
+    send: () => {},
+    status: () => ({
+      send: () => {},
+    }),
+  };
 
   try {
     for (let i = 1; i <= rounds; i++) {
-      const prompt = `Generate a question for round ${i} for a ${category} learning prompt engineering.`;
-      const result = await model.generateContent(prompt);
-      const text = result.response.text();
+      let difficultyLevel = 'easy';
+      let sizeWords = i * 10;
+      if (i > 4) difficultyLevel = 'medium';
+      if (i > 6) difficultyLevel = 'hard';
 
-      // Assuming the text is used for both questionText and correctPrompt
-      const questionText = text.trim();
-      const correctPrompt = text.trim();  // Adjust if needed
+      const prompt = `Generate a ${difficultyLevel} level question for round ${i} in ${category}. Ensure the question with min words ${sizeWords} is ${
+        i === 1 ? 'short and easy ' : 'appropriate for the difficulty level'
+      }.`;
+
+      const result = await model.generateContent(prompt);
+      const text = result.response.text().trim();
 
       const newQuestion = new Question({
         round: i,
-        questionText: questionText,
-        correctPrompt: correctPrompt,
+        questionText: text,
+        correctPrompt: text,
         category: category,
+        userId: userId,
       });
 
       await newQuestion.save();
     }
 
-    res.send('Questions generated successfully');
+    resMock.send('Questions generated successfully');
   } catch (error) {
     console.error('Error generating questions:', error);
-    res.status(500).send('An error occurred while generating questions');
+    resMock.status(500).send('An error occurred while generating questions');
   }
 };
 
@@ -89,7 +106,7 @@ exports.checkAnswer = async (req, res) => {
       optimalPrompt,
       nextRound,
       userId,
-      userProgress: user.progress
+      userProgress: user.progress,
     });
   } catch (error) {
     console.error('Error validating prompt:', error);

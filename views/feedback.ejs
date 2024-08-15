@@ -12,11 +12,19 @@
             <h2>Incorrect. The correct prompt is: <%= correctPrompt %>
             </h2>
             <% } %>
+
                 <p>Optimal Prompt: <%= optimalPrompt %>
                 </p>
+
                 <a href="/questions?userId=<%= userId %>&round=<%= nextRound %>">Next Question</a>
+
                 <% if (userProgress>= 10) { %>
-                    <a href="/certificate/download?userId=<%= userId %>">Download Certificate</a>
+                    <form action="/certificate/download" method="get">
+                        <label for="userName">Enter your name for the certificate:</label>
+                        <input type="text" id="userName" name="userName" required>
+                        <input type="hidden" name="userId" value="<%= userId %>">
+                        <button type="submit">Download Certificate</button>
+                    </form>
                     <a href="/tools/recommendations?userId=<%= userId %>">Get AI Tool Recommendations</a>
                     <% } %>
 </body>

@@ -4,7 +4,8 @@ const QuestionSchema = new mongoose.Schema({
   round: Number,
   questionText: String,
   correctPrompt: String,
-  category: String   
+  category: String,
+  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' } 
 });
 
 module.exports = mongoose.model('Question', QuestionSchema);

@@ -9,6 +9,8 @@
   "license": "ISC",
   "dependencies": {
     "@google/generative-ai": "^0.16.0",
+    "@huggingface/hub": "^0.15.1",
+    "@huggingface/inference": "^2.8.0",
     "body-parser": "^1.20.2",
     "config": "^3.3.12",
     "cookie": "^0.6.0",
@@ -16,6 +18,7 @@
     "dotenv": "^16.4.5",
     "ejs": "^3.1.10",
     "express": "^4.19.2",
+    "fs": "^0.0.1-security",
     "gemini-api": "^2.0.4",
     "i18next": "^23.12.2",
     "i18next-express-middleware": "^2.0.0",
@@ -26,7 +29,6 @@
     "pdfkit": "^0.15.0",
     "Router": "^2.1.0"
   },
-  "devDependencies": {},
   "keywords": [],
   "description": ""
 }

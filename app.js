@@ -26,6 +26,12 @@ app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
+
+const certificateRoutes = require('./routes/certificateRoutes');
+
+
+app.use('/', certificateRoutes);
+
 app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
 app.use('/questions', require('./routes/questions'));
