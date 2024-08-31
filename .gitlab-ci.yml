@@ -1,11 +1,10 @@
-image: node:16 # Use Node.js image; adjust version as needed
+image: node:16
 
 stages:
   - build
   - test
   - deploy
 
-# Install dependencies
 install_dependencies:
   stage: build
   script:
@@ -17,18 +16,21 @@ install_dependencies:
     paths:
       - node_modules/
 
-# Run tests (if you have tests)
 test:
   stage: test
   script:
-    - npm test # Ensure you have a test script defined in package.json
+    - npm test
   only:
     - main
 
-# Deploy your application
 deploy:
   stage: deploy
   script:
-    - node app.js # Start your application
+    - echo "Deploying to production server..."
+    - ssh $SSH_USER@$SSH_HOST "mkdir -p /var/www/myapp"
+    - rsync -avz --delete-after --exclude 'node_modules' ./ $SSH_USER@$SSH_HOST:/var/www/myapp/
+    - ssh $SSH_USER@$SSH_HOST "cd /var/www/myapp && npm install --production && pm2 restart app.js"
   only:
     - main
+  environment:
+    name: production
