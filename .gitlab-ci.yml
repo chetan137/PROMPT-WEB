@@ -1,0 +1,37 @@
+stages:
+  - install
+  - test
+  - deploy
+
+# Install dependencies
+install_dependencies:
+  stage: install
+  script:
+    - npm install
+  artifacts:
+    paths:
+      - node_modules/
+
+# Run tests (if you have any)
+test:
+  stage: test
+  script:
+    - npm test
+
+# Deploy your application
+deploy_production:
+  stage: deploy
+  script:
+    - npm install
+    - pm2 stop all || true
+    - pm2 start app.js --name "Prompt App"
+  only:
+    - main
+
+# Optional: Clean up after deployment
+cleanup:
+  stage: deploy
+  script:
+    - pm2 save
+  only:
+    - main
