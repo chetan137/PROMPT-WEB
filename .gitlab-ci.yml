@@ -1,37 +1,34 @@
+image: node:16 # Use Node.js image; adjust version as needed
+
 stages:
-  - install
+  - build
   - test
   - deploy
 
 # Install dependencies
 install_dependencies:
-  stage: install
+  stage: build
   script:
     - npm install
   artifacts:
     paths:
       - node_modules/
+  cache:
+    paths:
+      - node_modules/
 
-# Run tests (if you have any)
+# Run tests (if you have tests)
 test:
   stage: test
   script:
-    - npm test
-
-# Deploy your application
-deploy_production:
-  stage: deploy
-  script:
-    - npm install
-    - pm2 stop all || true
-    - pm2 start app.js --name "Prompt App"
+    - npm test # Ensure you have a test script defined in package.json
   only:
     - main
 
-# Optional: Clean up after deployment
-cleanup:
+# Deploy your application
+deploy:
   stage: deploy
   script:
-    - pm2 save
+    - node app.js # Start your application
   only:
     - main
