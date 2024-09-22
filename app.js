@@ -20,6 +20,8 @@ async function main() {
 }
 
 
+app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -35,6 +37,27 @@ app.use('/', certificateRoutes);
 app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
 app.use('/questions', require('./routes/questions'));
+
+
+app.get('/courses', (req, res) => {
+    res.render('courses'); // Renders courses.ejs
+});
+
+app.get('/AItools', (req, res) => {
+    res.render('AItools'); // Renders AItools.ejs
+});
+
+app.get('/team', (req, res) => {
+    res.render('team'); // Renders team.ejs
+});
+
+app.get('/feedback', (req, res) => {
+    res.render('feedback'); // Renders feedback.ejs
+});
+
+app.get('/contact', (req, res) => {
+    res.render('Contact'); // Renders Contact.ejs
+});
 
 app.listen(config.PORT, () => {
   console.log(`Server is running on port ${config.PORT}`);

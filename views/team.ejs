@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile card</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #710d2f, #1f2251);
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .main {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin: 50px;
+        }
+
+        .main1 {
+            height: 400px;
+            width: 90%;
+            max-width: 300px;
+            border: 1px solid black;
+            border-radius: 30px;
+            background-color: white;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .main1:hover {
+            transform: scale(1.05);
+            filter: saturate(1.6);
+        }
+
+        .image-cont {
+            height: 120px;
+            background-color: maroon;
+            border-radius: 30px 30px 0 0;
+        }
+
+        .image img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 5px solid white;
+            object-fit: cover;
+            margin-top: 5px;
+        }
+
+        p {
+            font-size: 16px;
+            padding: 0 15px;
+        }
+
+        .profile-footer {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+        }
+
+        .profile-footer button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .follow-btn:hover,
+        .message-btn:hover {
+            background-color: #d32f2f;
+        }
+
+        /* Media Queries for responsiveness */
+        @media (max-width: 768px) {
+            .main {
+                margin-top: 30px;
+            }
+
+            .main1 {
+                width: 90%;
+            }
+
+            p {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main1 {
+                width: 100%;
+                margin: 10px 0;
+            }
+
+            p {
+                font-size: 12px;
+            }
+
+            .profile-footer {
+                flex-direction: column;
+            }
+
+            .profile-footer button {
+                margin-bottom: 10px;
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main">
+
+        <!-- Person 1-ALL Details  -->
+        <div class="main1">
+            <div class="image-cont">
+                <div class="image"> <img src="images/Ashish.jpg" alt="Ashish"> </div>
+            </div>
+            <div class="text">
+                <h1> </h1>
+                <h3> Ashish Vishwakarma</h3>
+            </div>
+            <div>
+                <p>
+
+                </p>
+            </div>
+            <div class="profile-footer">
+                <button class="follow-btn"><b>Follow</b></button>
+                <a href="https://www.linkedin.com/in/ashish-vishwakarma-99bb7b2a1/" target="_blank"> <button
+                        class="message-btn"><b>Message</b></button>
+                </a>
+            </div>
+            <pre><b><p>Frontend Developer</p></b></pre>
+        </div>
+
+        <!-- Person 2 -->
+        <div class="main1">
+            <div class="image-cont">
+                <div class="image"> <img src="images/Chetan.png" alt="Chetan"> </div>
+            </div>
+            <div class="text">
+                <h1> </h1>
+                <h3>Chetan Shende</h3>
+            </div>
+            <div>
+                <p>
+
+                </p>
+            </div>
+            <br>
+            <div class="profile-footer">
+                <button class="follow-btn"><b>Follow</b></button>
+                <a href="https://www.linkedin.com/in/chetan137/" target="_blank"> <button
+                        class="message-btn"><b>Message</b></button>
+                </a>
+            </div>
+            <pre><b><p>Full Stack Developer</p></b></pre>
+        </div>
+
+        <!-- Person 3 -->
+        <div class="main1">
+            <div class="image-cont">
+                <div class="image"> <img src="images/Aayush.jpg" alt="Aayush"> </div>
+            </div>
+            <div class="text">
+                <h1> </h1>
+                <h3>Aayush Naik</h3>
+            </div>
+            <div>
+                <p>
+
+                </p>
+            </div>
+            <br>
+            <div class="profile-footer">
+                <button class="follow-btn"><b>Follow</b></button>
+                <a href="https://www.instagram.com/" target="_blank"> <button
+                        class="message-btn"><b>Message</b></button> </a>
+            </div>
+            <pre><b><p>Management team</p></b></pre>
+        </div>
+
+        <!-- Person 4 -->
+        <div class="main1">
+            <div class="image-cont">
+                <div class="image"> <img src="images/Shitanshu.jpg" alt="Shitanshu"> </div>
+            </div>
+            <div class="text">
+                <h1> </h1>
+                <h3>Shitanshu Yadav</h3>
+            </div>
+            <div>
+                <p>
+
+                </p>
+            </div>
+            <br>
+            <div class="profile-footer">
+                <button class="follow-btn"><b>Follow</b></button>
+                <button class="message-btn"><b>Message</b></button>
+            </div>
+            <pre><b><p>Management team</p></b></pre>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

@@ -12,6 +12,7 @@
     "@huggingface/hub": "^0.15.1",
     "@huggingface/inference": "^2.8.0",
     "body-parser": "^1.20.2",
+    "bootstrap": "^5.3.3",
     "config": "^3.3.12",
     "cookie": "^0.6.0",
     "cookie-parser": "^1.4.6",

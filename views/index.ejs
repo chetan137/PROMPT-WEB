@@ -1,19 +1,13 @@
-<!-- <!DOCTYPE html>
-<html>
-
-<head>
-    <title>Question</title>
-</head> -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Prompt Engineering</title>
+    <title>
+        <%= title %>
+    </title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
         * {
             margin: 0;
@@ -66,7 +60,6 @@
         .loginuser {
             margin-top: -110px;
             text-align: center;
-            margin-right: 1203px;
 
         }
 
@@ -74,8 +67,6 @@
             border-radius: 50%;
             height: 80px;
             width: 80px;
-            margin-top: 3rem;
-            z-index: 5;
         }
 
         .loginuser p {
@@ -133,11 +124,7 @@
         .welcome {
             height: 300px;
             max-width: 100%;
-            margin-top: 60px;
-
-            justify-content: center;
-            align-content: center;
-            align-items: center;
+            margin-top: 100px;
             margin-left: 150px;
             animation: textGlow 3s ease-in-out infinite alternate-reverse;
         }
@@ -145,17 +132,6 @@
         .name {
             font-size: 30px;
 
-        }
-
-        .form-floating {
-            align-items: center;
-            margin-left: 100px;
-
-            height: 550px;
-            width: 700px;
-            justify-content: center;
-            align-items: center;
-            display: flex;
         }
 
         .greeting {
@@ -236,92 +212,52 @@
             padding: 50px;
             text-align: center;
         }
-
-        .divmain {
-
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: -75px;
-
-
-
-        }
-
-        h2 {
-            margin-left: 600px;
-        }
     </style>
+
 </head>
 
 <body>
 
     <!-- Navigation Bar -->
     <nav class="navbar">
-        <h2>AI Prompt Engineering</h2>
+        <h2>
+            <%= title %>
+        </h2>
     </nav>
 
     <!-- Navigation Links -->
     <div class="other">
         <a href="/">Home</a>
-        <!-- <a href="/courses">Courses</a> -->
-        <a href="/AItools">AI Tools</a>
+        <a href="/courses">Courses</a>
+        <a href="/aitools">AI Tools</a>
         <a href="/team">Team</a>
-        <a href="/feed">Feedback</a>
+        <a href="/feedback">Feedback</a>
         <a href="/contact">Contact us</a>
     </div>
 
     <!-- User Login Section -->
-    <div class="loginuser">
-        <div class="icon"><img src="images/login.png" alt="User Icon"></div>
-
-    </div>
+    <!-- <div class="loginuser">
+        <div class="icon"><img src="/images/login.png" alt="User Icon"></div>
+        <% if (!user) { %>
+            <p><a href="/login">Login or Signup</a></p>
+            <% } else { %>
+                <p>Welcome, <%= user.name %> | <a href="/logout">Logout</a></p>
+                <% } %>
+    </div> -->
 
     <div class="welcome">
         <h1 id="element" class="name"></h1>
         <p class="greeting">Welcome to the course</p>
     </div>
 
-
-    <div class="divmain row">
-        <!-- <h2>Round <%= question.round %>
-        </h2> <br><br> -->
-        <!-- <p class="">
-            <%= question.questionText %>
-        </p> -->
-
-        <div class="card">
-            <h5 class="card-header">Round <%= question.round %>
-            </h5>
-            <div class="card-body">
-                <h5 class="card-title">Question </h5>
-                <p id="promptText" class="card-text">
-                    <b>
-                        <%= question.questionText %>
-                    </b>
-                </p>
-
-            </div>
+    <div class="bottom">
+        <div class="courses">
+            <button><a href="/module" target="_blank">Start learning prompt engineering</a></button>
         </div>
-        <br><br>
-        <hr> <br><br><br>
-        <div>
-            <form class="form-control" action="/questions/check" method="POST">
-                <input type="hidden" name="questionId" value="<%= question._id %>"> <br>
-                <input type="hidden" name="userId" value="<%= userId %>">
-                <br>
-                <label for="userPrompt">Your Prompt:</label>
-                <br>
-                <textarea class="form-control" id="userPrompt" name="userPrompt" required></textarea> <br>
-                <button type="submit">Submit</button>
-            </form>
+        <div class="next">
+            <button><a href="#">Hello, Add more</a></button>
         </div>
-
-
-
     </div>
-
 
     <br><br><br>
 
@@ -352,14 +288,14 @@
     <br>
 
     <footer>
-        <p>&copy; Designed and developed by Ashish and Chetan. All rights reserved.</p>
+        <p>&copy; 2024 AI Prompt Engineering. All rights reserved.</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script>
         // Initialize Typed.js
         var typed = new Typed('#element', {
-            strings: ['Hello Ashish,'],
+            strings: ['Hello <%= user ? user.name : "Guest" %>'],
             typeSpeed: 50,
             backSpeed: 25,
             backDelay: 1000,
@@ -376,37 +312,7 @@
             loop: true
         });
     </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const promptText = document.getElementById('promptText');
-
-            // Example: Append additional text or modify the existing text
-            const additionalText = ' - This is your optimal prompt for the task.';
-            promptText.innerText += additionalText;
-
-            // Example: Apply some text transformation (e.g., making it uppercase)
-            promptText.innerText = promptText.innerText.toUpperCase();
-        });
-    </script>
 
 </body>
 
 </html>
-
-<!--
-<body>
-    <h2>Round <%= question.round %>
-    </h2>
-    <p>
-        <%= question.questionText %>
-    </p>
-    <form action="/questions/check" method="POST">
-        <input type="hidden" name="questionId" value="<%= question._id %>">
-        <input type="hidden" name="userId" value="<%= userId %>">
-        <label for="userPrompt">Your Prompt:</label>
-        <textarea id="userPrompt" name="userPrompt" required></textarea>
-        <button type="submit">Submit</button>
-    </form>
-</body>
-
-</html> -->

@@ -2,7 +2,7 @@ const Question = require('../models/Question');
 const User = require('../models/User');
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 const config = require('../config');
-const i18next = require('../server/i18n');
+//const i18next = require('../server/i18n');
 
 const genAI = new GoogleGenerativeAI(config.GEMINI_API_KEY);
 const model = genAI.getGenerativeModel({
@@ -50,7 +50,7 @@ exports.generateQuestions = async (req, res) => {
       if (i > 6) difficultyLevel = 'hard';
 
       const prompt = `Generate a ${difficultyLevel} level question for round ${i} in ${category}. Ensure the question with min words ${sizeWords} is ${
-        i === 1 ? 'short and easy ' : 'appropriate for the difficulty level'
+        i === 1 ? 'short and easy ' : 'appropriate for the difficulty level , Question should be on technical side with minimun 2-3 lines so that user can write optimum prompt by seeing that'
       }.`;
 
       const result = await model.generateContent(prompt);

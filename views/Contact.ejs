@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #710d2f, #1f2251);
+            ;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .navbar {
+            background: linear-gradient(to left, #333, #333 50%, #eee 75%, #333 75%);
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+        }
+
+        .navbar h2 {
+            color: #fff;
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .other {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            background: linear-gradient(to right, #333, #333 50%, #eee 75%, #333 75%);
+            padding: 10px 0;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .other a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .other a:hover {
+            color: #f69d3c;
+        }
+
+        .loginuser {
+            margin-top: -110px;
+            text-align: center;
+
+        }
+
+        .icon img {
+            border-radius: 50%;
+            height: 80px;
+            width: 80px;
+            left: 15px;
+            margin-top: 26px;
+            display: flex;
+        }
+
+        .loginuser p {
+            margin-top: 5px;
+            font-size: 16px;
+        }
+
+        .loginuser p a {
+            color: #f69d3c;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .loginuser p a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            height: 50px;
+            color: white;
+            font-weight: bold;
+            font-style: italic;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: auto;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(to left, #333, #333 50%, #eee 75%, #333 75%);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f3f4f6;
+            background: linear-gradient(135deg, #710d2f, #1f2251);
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: auto;
+            margin-top: 5rem;
+            background-color: #ffffff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-form label {
+            display: block;
+            font-size: 0.9rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact-form button {
+            background-color: #3182ce;
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background-color: #2c5282;
+        }
+
+        .text {
+            color: black;
+            font-size: 25px;
+            margin-left: 700px;
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .navbar h1 {
+                font-size: 20px;
+            }
+
+            .other {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .other a {
+                margin: 5px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar h1 {
+                font-size: 18px;
+            }
+
+            .other {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <h2>AI Prompt Engineering</h2>
+    </nav>
+
+    <!-- Navigation Links -->
+    <div class="other">
+        <a href="main.html">Home</a>
+        <a href="courses.html">Courses</a>
+        <a href="AItools.html">AI Tools</a>
+        <a href="team.html">Team</a>
+        <a href="feedback.html">Feedback</a>
+        <a href="Contact.html">Contact us</a>
+    </div>
+
+    <!-- User Login Section -->
+    <div class="loginuser">
+        <div class="icon"><img src="login.png" alt="User Icon"></div>
+        <!-- <p><a href="Loginpage.html">Login or Signup</a></p> -->
+    </div>
+
+
+    <main class="p-4">
+        <section class="my-8">
+            <div class="section-title font-bold text-2xl text-center text">Contact Us</div>
+            <form action="#" method="post" class="contact-form">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required class="block w-full border-gray-300 rounded-md p-2">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required
+                    class="block w-full border-gray-300 rounded-md p-2">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="4" required
+                    class="block w-full border-gray-300 rounded-md p-2"></textarea>
+                <button type="submit"
+                    class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Send
+                    Message</button>
+            </form>
+        </section>
+    </main>
+
+
+    <footer>
+        <p>&copy; 2024 AI Prompt Engineering. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>

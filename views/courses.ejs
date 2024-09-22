@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #710d2f, #1f2251);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .navbar {
+            background: linear-gradient(to left, #333, #333 50%, #eee 75%, #333 75%);
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+        }
+
+        .navbar h2 {
+            color: #fff;
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .other {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            background: linear-gradient(to right, #333, #333 50%, #eee 75%, #333 75%);
+            padding: 10px 0;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .other a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .other a:hover {
+            color: #f69d3c;
+        }
+
+        .loginuser {
+            margin-top: -110px;
+            text-align: center;
+
+        }
+
+        .icon img {
+            border-radius: 50%;
+            height: 80px;
+            width: 80px;
+        }
+
+        .loginuser p {
+            margin-top: 5px;
+            font-size: 16px;
+        }
+
+        .loginuser p a {
+            color: #f69d3c;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .loginuser p a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            height: 50px;
+            color: white;
+            font-weight: bold;
+            font-style: italic;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: auto;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(to left, #333, #333 50%, #eee 75%, #333 75%);
+        }
+
+
+        @media (max-width: 768px) {
+            .navbar h1 {
+                font-size: 20px;
+            }
+
+            .other {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .other a {
+                margin: 5px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar h1 {
+                font-size: 18px;
+            }
+
+            .other {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <h2>AI Prompt Engineering</h2>
+    </nav>
+
+    <!-- Navigation Links -->
+    <div class="other">
+        <a href="/">Home</a>
+        <a href="/courses">Courses</a>
+        <a href="/AItools">AI Tools</a>
+        <a href="/team">Team</a>
+        <a href="/feedback">Feedback</a>
+        <a href="/contact">Contact us</a>
+    </div>
+
+    <!-- User Login Section -->
+    <div class="loginuser">
+        <div class="icon"><img src="images/login.png" alt="User Icon"></div>
+        <p><a href="Loginpage.html">Login or Signup</a></p>
+    </div>
+
+
+    <footer>
+        <p>&copy; 2024 AI Prompt Engineering. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>

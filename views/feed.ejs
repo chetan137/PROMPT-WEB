@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #710d2f, #1f2251);
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .main {
+            max-width: 90%;
+            width: 500px;
+            margin: 100px auto;
+            padding: 20px;
+            border: 3px solid green;
+            border-radius: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .main1 {
+            font-size: 30px;
+            color: green;
+            margin-bottom: 20px;
+        }
+
+        .emoji {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            font-size: 50px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .emopart {
+            filter: grayscale();
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .emopart:hover {
+            filter: none;
+            transform: scale(1.4);
+        }
+
+        textarea {
+            resize: vertical;
+            height: 100px;
+            width: 100%;
+            margin-top: 20px;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        button {
+            height: 40px;
+            width: 100%;
+            font-size: 20px;
+            border-radius: 25px;
+            background-color: green;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: darkgreen;
+        }
+
+        @media (max-width: 600px) {
+            .main1 {
+                font-size: 24px;
+            }
+
+            .emoji {
+                font-size: 40px;
+                gap: 10px;
+            }
+
+            button {
+                font-size: 18px;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main">
+
+        <div class="main1">Feedback</div>
+
+        <div>
+            <h1>How are you feeling?</h1>
+            <p>Your input is valuable in helping us better understand your<br>
+                needs and tailor our service accordingly.</p>
+        </div>
+
+        <div class="emoji">
+            <div class="emopart" title="very sad" data-emoji="😥">😥</div>
+            <div class="emopart" title="Sad" data-emoji="😔">😔</div>
+            <div class="emopart" title="Neutral" data-emoji="😐">😐</div>
+            <div class="emopart" title="Happy" data-emoji="🙂">🙂</div>
+            <div class="emopart" title="Very Happy" data-emoji="🥰">🥰</div>
+        </div>
+
+        <br>
+
+        <div>
+            <label for="feedback"><b>Feedback:</b></label><br>
+            <textarea id="feedback" name="feedback" placeholder="Enter your feedback" required></textarea>
+        </div>
+
+        <button type="submit" id="submit">Submit</button>
+
+    </div>
+
+    <script>
+        let selectedEmoji = '';
+
+        // Add click event listener to each emoji
+        document.querySelectorAll('.emopart').forEach(emoji => {
+            emoji.addEventListener('click', function () {
+                // Remove highlight from all emojis
+                document.querySelectorAll('.emopart').forEach(e => e.style.filter = 'grayscale()');
+                // Highlight the clicked emoji
+                this.style.filter = 'none';
+                // Store the selected emoji
+                selectedEmoji = this.getAttribute('data-emoji');
+            });
+        });
+
+        // Handle submit button click
+        document.getElementById('submit').addEventListener('click', function () {
+            const feedbackText = document.getElementById('feedback').value;
+
+            if (!selectedEmoji) {
+                alert('Please select an emoji to express your feeling.');
+                return;
+            }
+
+            if (!feedbackText) {
+                alert('Please enter your feedback.');
+                return;
+            }
+
+            alert(`Thank you for your feedback!\n\nFeeling: ${selectedEmoji}\nFeedback: ${feedbackText}`);
+        });
+    </script>
+</body>
+
+</html>

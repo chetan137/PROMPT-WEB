@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Tools</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #710d2f, #1f2251);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body.dark-mode {
+            background-color: #333;
+            color: #f4f4f9;
+        }
+
+        .header {
+            color: aliceblue;
+            text-align: center;
+            font-size: 2em;
+            margin: 20px 0;
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        #searchInput {
+            padding: 10px;
+            font-size: 1em;
+            width: 100%;
+            max-width: 300px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            transition: border-color 0.3s;
+        }
+
+        #searchInput:focus {
+            border-color: #666;
+            outline: none;
+        }
+
+        #themeToggle {
+            padding: 10px 20px;
+            font-size: 1em;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            background-color: #333;
+            color: #f4f4f9;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        #themeToggle.dark-mode {
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        .main {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 0 10px;
+        }
+
+        .exercise-card {
+            padding: 15px;
+            background-color: #eee;
+            border-radius: 15px;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+        }
+
+        .exercise-card:hover {
+            background-color: #ddd;
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .exercise-card .name {
+            color: violet;
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .exercise-card p {
+            margin: 8px 0;
+        }
+
+        body.dark-mode .exercise-card {
+            background-color: #222;
+            color: #f4f4f9;
+        }
+
+        .ai-tools {
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+
+        .ai-tool-card {
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .ai-tool-card img {
+            width: 100px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .ai-tool-card h3 {
+            margin: 10px 0;
+            font-size: 1.2em;
+        }
+
+        .ai-tool-card p {
+            font-size: 1em;
+            color: #555;
+        }
+
+        .redirect {
+            font-weight: bold;
+            font-style: italic;
+            color: #f69d3c;
+            font-size: 15px;
+            border-radius: 20px;
+            border: 2px dotted blue;
+            height: 30px;
+            width: 100px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .redirect:hover {
+            transform: scale(1.1);
+        }
+
+        .redirect.dark-mode {
+            background-color: #f4f4f9;
+            color: #333;
+            border: 2px dotted #333;
+        }
+
+        a {
+            text-decoration: none;
+            color: #f69d3c;
+        }
+
+        img {
+            border-radius: 50%;
+        }
+
+        footer {
+            background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
+            color: black;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 768px) {
+
+            .exercise-card,
+            .ai-tool-card {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .controls {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            #searchInput {
+                max-width: 200px;
+            }
+
+            #themeToggle {
+                width: 100%;
+                max-width: 200px;
+            }
+        }
+
+        .robot {
+            margin-top: -130px;
+            margin-left: 50px;
+            filter: brightness(105%) saturate(105%) contrast(120%);
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">Exercise Guide & AI Tools</div>
+
+    <div class="controls">
+        <input type="text" id="searchInput" placeholder="Search AI Tools..." oninput="filterCards()">
+        <button id="themeToggle" onclick="toggleTheme()"><b><i>Switch to Dark Mode</i></b></button>
+    </div>
+
+    <div class="robot">
+        <a href="main.html"> <img src="images/robot3.jpg" alt="" height="150px" width="150px"></a>
+    </div>
+
+
+    <div class="main" id="exerciseList">
+        <!-- ABS Workout -->
+        <!-- (Your existing exercise cards here) -->
+
+        <!-- AI Tools Section -->
+        <div class="ai-tools">
+            <h2>Explore AI Tools</h2>
+            <div class="main">
+                <!-- ChatGPT -->
+                <div class="ai-tool-card">
+                    <img src="images/chatgpt.jpeg" alt="ChatGPT">
+                    <h3>ChatGPT</h3>
+                    <p>ChatGPT is an AI language model developed by OpenAI, known for its ability to generate human-like
+                        text based on input. It's used for conversational agents, content generation, and more.</p>
+                    <button class="redirect"><a href="https://chatgpt.com/" target="_blank">Explore</a></button>
+                </div>
+
+                <!-- Gemini -->
+                <div class="ai-tool-card">
+                    <img src="images/gemini.jpeg" alt="Gemini AI" height="300px" width="300px">
+                    <h3>Gemini</h3>
+                    <p>Gemini is an advanced AI tool designed for machine learning tasks and data analysis, providing
+                        powerful algorithms and insights to enhance productivity.</p>
+                    <button class="redirect"><a href="https://gemini.google.com/app?hl=en-IN"
+                            target="_blank">Explore</a></button>
+                </div>
+
+                <!-- Copilot -->
+                <div class="ai-tool-card">
+                    <img src="images/GitHub Copilot.png" alt="GitHub Copilot">
+                    <h3>GitHub Copilot</h3>
+                    <p>GitHub Copilot is an AI-powered code completion tool that assists developers by suggesting code
+                        snippets and completing functions based on the context of their code.</p>
+                    <button class="redirect"><a href="https://github.com/features/copilot"
+                            target="_blank">Explore</a></button>
+                </div>
+
+                <!-- Jogg AI -->
+                <div class="ai-tool-card">
+                    <img src="images/Jogg AI.png" alt="Jogg AI">
+                    <h3>Jogg AI</h3>
+                    <p>Jogg AI offers AI-powered fitness and health guidance, providing personalized workout plans and
+                        tracking to help users achieve their fitness goals.</p>
+                    <button class="redirect"><a href="https://www.jogg.ai/" target="_blank">Explore</a></button>
+                </div>
+
+                <!-- Additional AI Tools -->
+                <div class="ai-tool-card">
+                    <img src="images/ninjaai.png" alt="Ninja AI">
+                    <h3>Ninja AI</h3>
+                    <p>Get tasks done with AI agents
+                        Multi-task with unlimited image generation, research, writing, scheduling, coding and more.</p>
+                    <button class="redirect"><a href="https://myninja.ai/" target="_blank">Explore</a></button>
+                </div>
+
+
+                <div class="ai-tool-card">
+                    <img src="images/grammarly.webp" alt="">
+                    <h3>Grammarly</h3>
+                    <p>Grammarly is an AI-powered writing assistant that helps users with grammar, spelling,
+                        punctuation, and style. It offers real-time writing suggestions and can also help with tone and
+                        clarity.</p>
+                    <button class="redirect"><a href="https://www.grammarly.com/" target="_blank">Explore</a></button>
+                </div>
+
+
+                <div class="ai-tool-card">
+                    <img src="images/DALL·E 3.png" alt="">
+                    <h3>DALL·E 3</h3>
+                    <p>DALL·E 3 is an advanced version of OpenAI's image generation model. It creates images from
+                        textual descriptions and can generate highly detailed and contextually accurate visuals.</p>
+                    <button class="redirect"><a
+                            href="https://openart.ai/home?gad_source=1&gclid=Cj0KCQjw_sq2BhCUARIsAIVqmQvnORCArBdjPU-7vpvbivgCZIeKRvDWyPmG0aK-F80Q-ULKMoBMQmIaAmbYEALw_wcB"
+                            target="_blank">Explore</a></button>
+                </div>
+
+
+                <div class="ai-tool-card">
+                    <img src="images/Jasper.jpg" alt="">
+                    <h3>Jasper</h3>
+                    <p>Jasper (formerly Jarvis) is an AI content generation tool designed to help with writing tasks,
+                        including blog posts, marketing copy, and social media content.</p>
+                    <button class="redirect"><a href="https://www.jasper.ai/" target="_blank">Explore</a></button>
+                </div>
+
+
+
+                <div class="ai-tool-card">
+                    <img src="images/MurfAI.png" alt="">
+                    <h3>MurfAI</h3>
+                    <p>MurfAI is an AI-powered tool for creating voiceovers and synthetic speech. It offers realistic
+                        and natural-sounding voice synthesis for various applications.</p>
+                    <button class="redirect"><a href="https://murf.ai/" target="_blank">Explore</a></button>
+                </div>
+
+
+                <div class="ai-tool-card">
+                    <img src="images/PDF24.png" alt="">
+                    <h3>PDF24</h3>
+                    <p>PDF24 is a suite of tools for working with PDF files. It offers a variety of functions, including
+                        PDF creation, conversion, editing, and merging.</p>
+                    <button class="redirect"><a href="https://www.pdf24.org/en/" target="_blank">Explore</a></button>
+                </div>
+
+
+                <div class="ai-tool-card">
+                    <img src="" alt="">
+                    <h3>Add yours</h3>
+                    <p></p>
+                    <button class="redirect"><a href="https://www.imagetotext.info/"
+                            target="_blank">Explore</a></button>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 Exercise Guide & AI Tools. All rights reserved.
+    </footer>
+
+    <script>
+        let debounceTimeout;
+        function filterCards() {
+            clearTimeout(debounceTimeout);
+            debounceTimeout = setTimeout(() => {
+                const query = document.getElementById('searchInput').value.toLowerCase();
+                const cards = document.querySelectorAll('.exercise-card');
+                cards.forEach(card => {
+                    if (card.textContent.toLowerCase().includes(query)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }, 300); // Adjust debounce delay as needed
+        }
+
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            const themeToggle = document.getElementById('themeToggle');
+            themeToggle.classList.toggle('dark-mode');
+            themeToggle.textContent = document.body.classList.contains('dark-mode') ? 'Switch to Light Mode' : 'Switch to Dark Mode';
+        }
+    </script>
+
+</body>
+
+</html>
