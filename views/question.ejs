@@ -31,7 +31,8 @@
             text-align: center;
             background-image: linear-gradient(to right, #434343 0%, black 100%);
         }
-        .name1{
+
+        .name1 {
             margin-left: 600px;
             font-weight: bold;
         }
@@ -97,6 +98,7 @@
             font-weight: bold;
             font-style: italic;
         }
+
         .welcome {
             height: 150px;
             overflow: hidden;
@@ -141,7 +143,8 @@
             box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
             background-color: #f69d3c;
         }
-        .showin{
+
+        .showin {
 
             margin-left: 550px;
         }
@@ -193,6 +196,7 @@
                 width: 90%;
             }
         }
+
         /* .small-circle {
             width: 20px;
             height: 20px;
@@ -236,11 +240,14 @@
 
     <div class="divmain row">
         <div class="card showin">
-            <h5 class="card-header">Round <%= question.round %></h5>
+            <h5 class="card-header">Round <%= question.round %>
+            </h5>
             <div class="card-body">
                 <h5 class="card-title">Question</h5>
                 <p id="promptText" class="card-text">
-                    <b><%= question.questionText %></b>
+                    <b>
+                        <%= question.questionText %>
+                    </b>
                 </p>
             </div>
         </div>
@@ -260,7 +267,8 @@
 
     <section id="about" class="section">
         <h1>About the Course</h1>
-        <p>This course will guide you through the basics of prompt engineering, helping you create more effective prompts for AI models.</p>
+        <p>This course will guide you through the basics of prompt engineering, helping you create more effective
+            prompts for AI models.</p>
     </section>
 
 
@@ -303,7 +311,7 @@
     <script>
         // Initialize Typed.js for the welcome text
         var typed = new Typed('#element', {
-            strings: ['Hello Sir,'],
+            strings: ['Hello Participant...🤖'],
             typeSpeed: 50,
             backSpeed: 25,
             loop: true
@@ -313,7 +321,9 @@
         document.addEventListener('DOMContentLoaded', () => {
             const promptText = document.getElementById('promptText');
             promptText.innerText += ' - This is your optimal prompt for the task.';
-            promptText.innerText = promptText.innerText.toUpperCase();
+            let sanitizedQuestion = promptText.replace(/[^\w\s*']/g, '');
+
+            sanitizedQuestion.innerText = sanitizedQuestion.innerText.toUpperCase();
         });
 
         // document.addEventListener('mousemove', (e) => {

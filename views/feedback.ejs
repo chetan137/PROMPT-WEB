@@ -86,7 +86,8 @@
         .loginuser p a:hover {
             text-decoration: underline;
         }
-        .card{
+
+        .card {
             text-align: center;
             margin-top: 200px;
             margin-left: 220px;
@@ -96,7 +97,8 @@
             align-items: center;
             justify-content: center;
         }
-        .correct{
+
+        .correct {
             margin-left: -80px;
             font-weight: bold;
         }
@@ -142,7 +144,25 @@
         h2 {
             margin-left: 600px;
         }
+
+
+        #questionDisplay {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            max-width: 600px;
+            margin: 20px auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .question {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
     </style>
+
 </head>
 
 <body>
@@ -181,9 +201,11 @@
                 </p>
 
                 <p class="card-text">
-                <p id="promptText">Optimal Prompt:<br>
-                    <%= optimalPrompt %>
-                </p>
+                    <b>
+                        <p id="promptText questionDisplay">Optimal Prompt:<br>
+                            <%= optimalPrompt %>
+                        </p>
+                    </b>
                 </p>
 
                 <a class="btn btn-primary" href="/questions?userId=<%= userId %>&round=<%= nextRound %>">Next
@@ -217,6 +239,39 @@
             // Example: Apply some text transformation (e.g., making it uppercase)
             promptText.innerText = promptText.innerText.toUpperCase();
         });
+    </script>
+    <script>
+        // Sample question array from backend with random text and special characters
+        const questionsFromBackend = [
+            "What &is th#e cap@ital of Fran*ce?",
+            "Na%me th^e larg$est planet in the s!olar syst'em.",
+            "How ma&ny co@nti'nents ar'e ther#e on Ear^th?"
+        ];
+
+        // Function to sanitize and format questions
+        function sanitizeAndDisplayQuestions(questions) {
+            const displayArea = document.getElementById('questionDisplay');
+            displayArea.innerHTML = '';  // Clear existing content
+
+            questions.forEach(question => {
+                // Remove special characters
+                let sanitizedQuestion = question.replaceAll(/[^\w\s?*']/, '');
+
+                // Capitalize the first letter of each question
+                sanitizedQuestion = sanitizedQuestion.charAt(0).toUpperCase() + sanitizedQuestion.slice(1);
+
+                // Create a div to display the question
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'question';
+                questionDiv.textContent = sanitizedQuestion;
+
+                // Append to display area
+                displayArea.appendChild(questionDiv);
+            });
+        }
+
+        // Call the function to display the sanitized questions
+        sanitizeAndDisplayQuestions(questionsFromBackend);
     </script>
 
 </body>
