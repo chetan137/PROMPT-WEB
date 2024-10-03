@@ -203,7 +203,7 @@
         </form>
 
         <div class="new1">
-            <p>Already have an account?<a href="#" onclick="document.getElementById('loginForm').submit();">Login</a></p>
+            <p>Already have an account?<a href="http://localhost:8080/users/login" onclick="document.getElementById('loginForm').submit();">Login</a></p>
         </div>
     </div>
 
@@ -212,7 +212,7 @@
             var username = document.getElementById("username").value;
             var password = document.getElementById("password").value;
 
-            if (username === "" || password === "") {
+            if (username === "chetan" || password === "chetan.137") {
                 alert("Abey Sab sahi sahi fill kr ");
                 return false;
             } else if (username === "user" && password === "password") {

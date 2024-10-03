@@ -253,6 +253,19 @@
             margin-left: 600px;
         }
     </style>
+    <style>/* Optional: For styling the cursor effect (blinking) */
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+#typingText::after {
+  content: '|';
+  animation: blink 3s steps(1) infinite;
+  border-right: 2px solid black;
+}
+</style>
 </head>
 
 <body>
@@ -288,20 +301,20 @@
         <!-- <h2>Round <%= question.round %>
         </h2> <br><br> -->
         <!-- <p class="">
-            <%= question.questionText %>
+
         </p> -->
 
         <div class="card">
             <h5 class="card-header">Round <%= question.round %>
             </h5>
             <div class="card-body">
-                <h5 class="card-title">Question </h5>
+                <h5 class="card-title">Question</h5>
                 <p id="promptText" class="card-text">
-                    <b>
+                    <b id="typingText">
                         <%= question.questionText %>
+                        <!-- The question text will be inserted letter by letter using JS -->
                     </b>
                 </p>
-
             </div>
         </div>
         <br><br>
@@ -339,9 +352,20 @@
                 <p>Get to know what prompts are and how they influence AI behavior.</p>
             </div>
             <div class="card">
-                <h3>Google Gemini API</h3>
-                <p>Learn how to integrate and use the Google Gemini API for prompt generation.</p>
+                <h5 class="card-header">Round
+                    <span id="roundText"></span> <!-- Use an empty span for typing effect -->
+                </h5>
+                <div class="card-body">
+                    <h5 class="card-title">Question</h5>
+                    <p id="promptText" class="card-text">
+                        <b>
+                            <span id="questionText"></span> <!-- Use an empty span for typing effect -->
+                        </b>
+                    </p>
+                </div>
             </div>
+
+
             <div class="card">
                 <h3>Advanced Techniques</h3>
                 <p>Dive into advanced prompt engineering techniques to refine your skills.</p>
@@ -359,7 +383,7 @@
     <script>
         // Initialize Typed.js
         var typed = new Typed('#element', {
-            strings: ['Hello Ashish,'],
+            strings: ['Hello Sir,'],
             typeSpeed: 50,
             backSpeed: 25,
             backDelay: 1000,
@@ -410,3 +434,21 @@
 </body>
 
 </html> -->
+<script>
+function typeEffect(element, text, delay = 1000000) {
+    let i = 0;
+    function typeLetter() {
+        if (i < text.length) {
+            element.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(typeLetter, delay);        }
+    }
+    typeLetter();
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const textElement = document.getElementById('typingText');
+    const text = "<%= question.questionText %>";
+    typeEffect(textElement, text, 1000000);
+});
+</script>

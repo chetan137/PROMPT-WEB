@@ -49,9 +49,22 @@ exports.generateQuestions = async (req, res) => {
       if (i > 4) difficultyLevel = 'medium';
       if (i > 6) difficultyLevel = 'hard';
 
-      const prompt = `Generate a ${difficultyLevel} level question for round ${i} in ${category}. Ensure the question with min words ${sizeWords} is ${
-        i === 1 ? 'short and easy ' : 'appropriate for the difficulty level , Question should be on technical side with minimun 2-3 lines so that user can write optimum prompt by seeing that'
-      }.`;
+      const prompt =`Generate a ${difficultyLevel} level question for round ${i} in ${category}. Ensure the question:
+
+* Has a minimum of ${sizeWords} words.
+* Is **short and easy** for round 1, but **appropriate for the difficulty level** for subsequent rounds.
+* Focuses on the **technical aspects** of the topic.
+* Provides at least **2-3 lines** of context to guide users in formulating effective prompts.
+* Is **well-structured** and **concise**.
+* Avoids ambiguity or vagueness.
+
+**Example (for round 1, difficulty level "easy", category "programming"):**
+
+"Write a Python function that takes a list of numbers as input and returns the sum of all even numbers in the list."
+
+**Example (for round 3, difficulty level "medium", category "data science"):**
+
+"Explain the concept of cross-validation in machine learning and describe its importance in model evaluation. Provide a code example in Python demonstrating how to implement k-fold cross-validation."`;
 
       const result = await model.generateContent(prompt);
       const text = result.response.text().trim();

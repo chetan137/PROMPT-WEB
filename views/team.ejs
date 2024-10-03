@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile card</title>
+    <link rel="stylesheet" href="../public/style.css">
     <style>
         body {
             background: linear-gradient(135deg, #710d2f, #1f2251);
@@ -112,9 +113,262 @@
             }
         }
     </style>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Arial', sans-serif;
+        background: linear-gradient(135deg, #710d2f, #1f2251);
+        color: white;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .navbar {
+        background: linear-gradient(to left, #333, #333 50%, #eee 75%, #333 75%);
+        padding: 10px 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+    }
+
+    .navbar h2 {
+        color: #fff;
+        font-size: 24px;
+        text-align: center;
+    }
+
+    .other {
+        display: flex;
+        justify-content: center;
+        gap: 50px;
+        background: linear-gradient(to right, #333, #333 50%, #eee 75%, #333 75%);
+        padding: 10px 0;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .other a {
+        color: white;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+
+    .other a:hover {
+        color: #f69d3c;
+    }
+
+    .loginuser {
+        margin-top: -110px;
+        text-align: center;
+        margin-right: 1203px;
+
+    }
+
+    .icon img {
+        border-radius: 50%;
+        height: 80px;
+        width: 80px;
+        margin-top: 3rem;
+        z-index: 5;
+    }
+
+    .loginuser p {
+        margin-top: 5px;
+        font-size: 16px;
+    }
+
+    .loginuser p a {
+        color: #f69d3c;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .loginuser p a:hover {
+        text-decoration: underline;
+    }
+
+    footer {
+        height: 50px;
+        color: white;
+        font-weight: bold;
+        font-style: italic;
+        text-align: center;
+        padding: 10px 0;
+        margin-top: auto;
+        box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+        background: linear-gradient(to left, #333, #333 50%, #eee 75%, #333 75%);
+    }
+
+    @media (max-width: 768px) {
+        .navbar h1 {
+            font-size: 20px;
+        }
+
+        .other {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .other a {
+            margin: 5px 0;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .navbar h1 {
+            font-size: 18px;
+        }
+
+        .other {
+            font-size: 16px;
+        }
+    }
+
+    .welcome {
+        height: 300px;
+        max-width: 100%;
+        margin-top: 60px;
+
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        margin-left: 150px;
+        animation: textGlow 3s ease-in-out infinite alternate-reverse;
+    }
+
+    .name {
+        font-size: 30px;
+
+    }
+
+    .form-floating {
+        align-items: center;
+        margin-left: 100px;
+
+        height: 550px;
+        width: 700px;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+
+    .greeting {
+        font-size: 30px;
+        font-weight: bold;
+        font-style: italic;
+
+
+    }
+
+    @keyframes textGlow {
+        from {
+            text-shadow: 0 0 10px #f69d3c, 0 0 20px #f69d3c, 0 0 30px #f69d3c;
+        }
+
+        to {
+            text-shadow: 0 0 20px #ffb84d, 0 0 40px #ffb84d, 0 0 60px #ffb84d;
+        }
+    }
+
+    .courses {
+        margin-top: 50px;
+        margin-left: 150px;
+
+    }
+
+    .bottom {
+        display: flex;
+    }
+
+    .next {
+        margin-top: 50px;
+        margin-left: 700px;
+
+    }
+
+    button {
+        font-weight: bold;
+        font-style: italic;
+        height: 50px;
+        font-size: 25px;
+        border-radius: 20px;
+        border: 5px solid lightblue;
+    }
+
+    a {
+        text-decoration: none;
+        color: black;
+    }
+
+    .learn-cards {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 30px;
+    }
+
+    .card {
+        color: black;
+        background-color: white;
+        padding: 20px;
+        border-radius: 20px;
+        width: 30%;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+    }
+
+    .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+        background-color: #f69d3c;
+    }
+
+    .card h3 {
+        margin-top: 0;
+    }
+
+    .section {
+        padding: 50px;
+        text-align: center;
+    }
+
+    .divmain {
+
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: -75px;
+
+
+
+    }
+
+    h2 {
+        margin-left: 600px;
+    }
+</style>
+
 </head>
 
 <body>
+    <nav class="navbar">
+        <h2>AI Prompt Engineering</h2>
+    </nav>
+
+    <!-- Navigation Links -->
+    <div class="other">
+        <a href="/">Home</a>
+        <!-- <a href="/courses">Courses</a> -->
+        <a href="/AItools">AI Tools</a>
+        <a href="/team">Team</a>
+        <a href="/feed">Feedback</a>
+        <a href="/contact">Contact us</a>
+    </div>
 
     <div class="main">
 
