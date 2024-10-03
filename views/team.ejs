@@ -112,6 +112,16 @@
                 width: 80%;
             }
         }
+        /* .small-circle {
+            width: 20px;
+            height: 20px;
+            background-color: #ff4c4c;
+            border-radius: 50%;
+            position: absolute;
+            top: 200px;
+            right: 200px;
+            animation: moveSmall 12s infinite alternate ease-in-out;
+        } */
     </style>
 <style>
     * {
@@ -370,6 +380,8 @@
         <a href="/contact">Contact us</a>
     </div>
 
+    <!-- <div class="small-circle"></div> -->
+
     <div class="main">
 
         <!-- Person 1-ALL Details  -->
@@ -394,6 +406,8 @@
             </div>
             <pre><b><p>Frontend Developer</p></b></pre>
         </div>
+
+        
 
         <!-- Person 2 -->
         <div class="main1">
@@ -466,6 +480,14 @@
         </div>
 
     </div>
+
+    <!-- <script>
+        document.addEventListener('mousemove', (e) => {
+            const circle = document.querySelector('.small-circle');
+            circle.style.left = `${e.clientX - 10}px`;  // Adjusted to center the circle on the mouse
+            circle.style.top = `${e.clientY - 10}px`;
+        });
+    </script> -->
 
 </body>
 

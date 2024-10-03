@@ -1,9 +1,3 @@
-<!-- <!DOCTYPE html>
-<html>
-
-<head>
-    <title>Question</title>
-</head> -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,38 +13,42 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            overflow-x: hidden;
         }
 
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #710d2f, #1f2251);
             color: white;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #710d2f, #1f2251);
         }
 
+        /* Navbar */
         .navbar {
-            background: linear-gradient(to left, #333, #333 50%, #eee 75%, #333 75%);
             padding: 10px 20px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-
+            text-align: center;
+            background-image: linear-gradient(to right, #434343 0%, black 100%);
+        }
+        .name1{
+            margin-left: 600px;
+            font-weight: bold;
         }
 
         .navbar h2 {
             color: #fff;
             font-size: 24px;
-            text-align: center;
         }
 
         .other {
             display: flex;
             justify-content: center;
-            gap: 50px;
-            background: linear-gradient(to right, #333, #333 50%, #eee 75%, #333 75%);
-            padding: 10px 0;
+            gap: 30px;
+            padding: 10px;
             font-size: 18px;
             font-weight: bold;
+            background-image: linear-gradient(to right, #434343 0%, black 100%);
         }
 
         .other a {
@@ -64,10 +62,9 @@
         }
 
         .loginuser {
-            margin-top: -110px;
+            position: relative;
+            margin: 1rem;
             text-align: center;
-            margin-right: 1203px;
-
         }
 
         .icon img {
@@ -75,41 +72,104 @@
             height: 80px;
             width: 80px;
             margin-top: 3rem;
-            z-index: 5;
-        }
-
-        .loginuser p {
-            margin-top: 5px;
-            font-size: 16px;
-        }
-
-        .loginuser p a {
-            color: #f69d3c;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .loginuser p a:hover {
-            text-decoration: underline;
         }
 
         footer {
             height: 50px;
+            text-align: center;
+            padding: 10px;
+            margin-top: auto;
+            background: #333;
             color: white;
             font-weight: bold;
             font-style: italic;
+            background-image: linear-gradient(to right, #434343 0%, black 100%);
+        }
+
+        .welcome {
             text-align: center;
-            padding: 10px 0;
-            margin-top: auto;
-            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-            background: linear-gradient(to left, #333, #333 50%, #eee 75%, #333 75%);
+            margin-top: 60px;
+            animation: textGlow 3s ease-in-out infinite alternate-reverse;
+        }
+
+        .greeting {
+            font-size: 30px;
+            font-weight: bold;
+            font-style: italic;
+        }
+        .welcome {
+            height: 150px;
+            overflow: hidden;
+
+        }
+
+        .welcome h1 {
+            white-space: nowrap;
+        }
+
+        #element {
+            display: inline-block;
+            min-width: 200px;
+            height: 50px;
+            line-height: 50px;
+            white-space: nowrap;
+        }
+
+        @keyframes textGlow {
+            from {
+                text-shadow: 0 0 10px #f69d3c, 0 0 20px #f69d3c;
+            }
+
+            to {
+                text-shadow: 0 0 20px #ffb84d, 0 0 40px #ffb84d;
+            }
+        }
+
+        .card {
+            color: black;
+            background-color: white;
+            padding: 20px;
+            border-radius: 20px;
+            width: 30%;
+            margin: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+            background-color: #f69d3c;
+        }
+        .showin{
+
+            margin-left: 550px;
+        }
+
+        .form-control {
+            max-width: 600px;
+            margin: 0 auto;
+
+        }
+
+        textarea {
+            height: 90px;
+
+        }
+
+        .section {
+            padding: 50px;
+            text-align: center;
+        }
+
+        .learn-cards {
+            display: flex;
+            margin-top: 30px;
+            flex-wrap: wrap;
+            justify-content: space-around;
         }
 
         @media (max-width: 768px) {
-            .navbar h1 {
-                font-size: 20px;
-            }
-
             .other {
                 flex-direction: column;
                 align-items: center;
@@ -121,175 +181,52 @@
         }
 
         @media (max-width: 480px) {
-            .navbar h1 {
-                font-size: 18px;
+            .navbar h2 {
+                font-size: 20px;
             }
 
-            .other {
-                font-size: 16px;
-            }
-        }
-
-        .welcome {
-            height: 300px;
-            max-width: 100%;
-            margin-top: 60px;
-
-            justify-content: center;
-            align-content: center;
-            align-items: center;
-            margin-left: 150px;
-            animation: textGlow 3s ease-in-out infinite alternate-reverse;
-        }
-
-        .name {
-            font-size: 30px;
-
-        }
-
-        .form-floating {
-            align-items: center;
-            margin-left: 100px;
-
-            height: 550px;
-            width: 700px;
-            justify-content: center;
-            align-items: center;
-            display: flex;
-        }
-
-        .greeting {
-            font-size: 30px;
-            font-weight: bold;
-            font-style: italic;
-
-
-        }
-
-        @keyframes textGlow {
-            from {
-                text-shadow: 0 0 10px #f69d3c, 0 0 20px #f69d3c, 0 0 30px #f69d3c;
+            .card {
+                width: 90%;
             }
 
-            to {
-                text-shadow: 0 0 20px #ffb84d, 0 0 40px #ffb84d, 0 0 60px #ffb84d;
+            .form-control {
+                width: 90%;
             }
         }
+        /* .small-circle {
+            width: 20px;
+            height: 20px;
+            background-color: #ff4c4c;
+            border-radius: 50%;
+            position: absolute;
 
-        .courses {
-            margin-top: 50px;
-            margin-left: 150px;
-
-        }
-
-        .bottom {
-            display: flex;
-        }
-
-        .next {
-            margin-top: 50px;
-            margin-left: 700px;
-
-        }
-
-        button {
-            font-weight: bold;
-            font-style: italic;
-            height: 50px;
-            font-size: 25px;
-            border-radius: 20px;
-            border: 5px solid lightblue;
-        }
-
-        a {
-            text-decoration: none;
-            color: black;
-        }
-
-        .learn-cards {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 30px;
-        }
-
-        .card {
-            color: black;
-            background-color: white;
-            padding: 20px;
-            border-radius: 20px;
-            width: 30%;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
-            background-color: #f69d3c;
-        }
-
-        .card h3 {
-            margin-top: 0;
-        }
-
-        .section {
-            padding: 50px;
-            text-align: center;
-        }
-
-        .divmain {
-
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: -75px;
-
-
-
-        }
-
-        h2 {
-            margin-left: 600px;
-        }
+            left: 200px;
+            animation: moveSmall 12s infinite alternate ease-in-out;
+        } */
     </style>
-    <style>/* Optional: For styling the cursor effect (blinking) */
-@keyframes blink {
-  50% {
-    border-color: transparent;
-  }
-}
-
-#typingText::after {
-  content: '|';
-  animation: blink 3s steps(1) infinite;
-  border-right: 2px solid black;
-}
-</style>
 </head>
 
 <body>
 
-    <!-- Navigation Bar -->
     <nav class="navbar">
-        <h2>AI Prompt Engineering</h2>
+        <h2 class="name1">AI Prompt Engineering</h2>
     </nav>
 
-    <!-- Navigation Links -->
     <div class="other">
         <a href="/">Home</a>
-        <!-- <a href="/courses">Courses</a> -->
         <a href="/AItools">AI Tools</a>
         <a href="/team">Team</a>
         <a href="/feed">Feedback</a>
         <a href="/contact">Contact us</a>
     </div>
 
-    <!-- User Login Section -->
+    <!-- <div class="small-circle"></div> -->
+
+
     <div class="loginuser">
         <div class="icon"><img src="images/login.png" alt="User Icon"></div>
-
     </div>
+
 
     <div class="welcome">
         <h1 id="element" class="name"></h1>
@@ -298,51 +235,34 @@
 
 
     <div class="divmain row">
-        <!-- <h2>Round <%= question.round %>
-        </h2> <br><br> -->
-        <!-- <p class="">
-
-        </p> -->
-
-        <div class="card">
-            <h5 class="card-header">Round <%= question.round %>
-            </h5>
+        <div class="card showin">
+            <h5 class="card-header">Round <%= question.round %></h5>
             <div class="card-body">
                 <h5 class="card-title">Question</h5>
                 <p id="promptText" class="card-text">
-                    <b id="typingText">
-                        <%= question.questionText %>
-                        <!-- The question text will be inserted letter by letter using JS -->
-                    </b>
+                    <b><%= question.questionText %></b>
                 </p>
             </div>
         </div>
-        <br><br>
-        <hr> <br><br><br>
+        <br>
+        <hr><br><br>
         <div>
             <form class="form-control" action="/questions/check" method="POST">
-                <input type="hidden" name="questionId" value="<%= question._id %>"> <br>
+                <input type="hidden" name="questionId" value="<%= question._id %>">
                 <input type="hidden" name="userId" value="<%= userId %>">
-                <br>
                 <label for="userPrompt">Your Prompt:</label>
-                <br>
-                <textarea class="form-control" id="userPrompt" name="userPrompt" required></textarea> <br>
-                <button type="submit">Submit</button>
+                <textarea class="form-control" id="userPrompt" name="userPrompt" required rows="4"></textarea>
+                <button type="submit" class="btn btn-primary mt-3">Submit</button>
             </form>
         </div>
-
-
-
     </div>
 
 
-    <br><br><br>
-
     <section id="about" class="section">
-        <h1 style="color: blue; font-size: 30px;"><b><i>About the Course</i></b></h1>
-        <p style="font-size: 20px;"><b><i>This course will guide you through the basics of prompt engineering, helping
-                    you create more effective prompts for AI models.</i></b></p>
+        <h1>About the Course</h1>
+        <p>This course will guide you through the basics of prompt engineering, helping you create more effective prompts for AI models.</p>
     </section>
+
 
     <section id="learn" class="section">
         <h2>What You'll Learn</h2>
@@ -373,82 +293,35 @@
         </div>
     </section>
 
-    <br>
 
     <footer>
         <p>&copy; Designed and developed by Ashish and Chetan. All rights reserved.</p>
     </footer>
 
+    <!-- JavaScript for Typed.js -->
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script>
-        // Initialize Typed.js
+        // Initialize Typed.js for the welcome text
         var typed = new Typed('#element', {
             strings: ['Hello Sir,'],
             typeSpeed: 50,
             backSpeed: 25,
-            backDelay: 1000,
-            startDelay: 1000,
             loop: true
         });
 
-        var typed = new Typed('#newele', {
-            strings: ['.....'],
-            typeSpeed: 50,
-            backSpeed: 25,
-            backDelay: 1000,
-            startDelay: 500,
-            loop: true
-        });
-    </script>
-    <script>
+        // Example: Modify the prompt text after the page loads
         document.addEventListener('DOMContentLoaded', () => {
             const promptText = document.getElementById('promptText');
-
-            // Example: Append additional text or modify the existing text
-            const additionalText = ' - This is your optimal prompt for the task.';
-            promptText.innerText += additionalText;
-
-            // Example: Apply some text transformation (e.g., making it uppercase)
+            promptText.innerText += ' - This is your optimal prompt for the task.';
             promptText.innerText = promptText.innerText.toUpperCase();
         });
-    </script>
 
+        // document.addEventListener('mousemove', (e) => {
+        //     const circle = document.querySelector('.small-circle');
+        //     circle.style.left = `${e.clientX - 10}px`;  // Adjusted to center the circle on the mouse
+        //     circle.style.top = `${e.clientY - 10}px`;
+        // });
+    </script>
 </body>
 
 </html>
-
-<!--
-<body>
-    <h2>Round <%= question.round %>
-    </h2>
-    <p>
-        <%= question.questionText %>
-    </p>
-    <form action="/questions/check" method="POST">
-        <input type="hidden" name="questionId" value="<%= question._id %>">
-        <input type="hidden" name="userId" value="<%= userId %>">
-        <label for="userPrompt">Your Prompt:</label>
-        <textarea id="userPrompt" name="userPrompt" required></textarea>
-        <button type="submit">Submit</button>
-    </form>
-</body>
-
-</html> -->
-<script>
-function typeEffect(element, text, delay = 1000000) {
-    let i = 0;
-    function typeLetter() {
-        if (i < text.length) {
-            element.innerHTML += text.charAt(i);
-            i++;
-            setTimeout(typeLetter, delay);        }
-    }
-    typeLetter();
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    const textElement = document.getElementById('typingText');
-    const text = "<%= question.questionText %>";
-    typeEffect(textElement, text, 1000000);
-});
-</script>
