@@ -203,8 +203,10 @@
         </form>
 
         <div class="new1">
-            <p>Already have an account?<a href="http://localhost:3000/users/login"
-                    onclick="document.getElementById('loginForm').submit();">Login</a></p>
+            <p>Already have an account?</p>
+            <form id="loginForm" action="/users/login" method="GET">
+                <button type="submit">Login</button>
+            </form>
         </div>
     </div>
 
