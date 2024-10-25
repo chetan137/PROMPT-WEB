@@ -49,14 +49,17 @@ exports.generateQuestions = async (req, res) => {
       if (i > 4) difficultyLevel = 'medium';
       if (i > 6) difficultyLevel = 'hard';
 
-      const prompt =`Generate a ${difficultyLevel} level question for round ${i} in ${category}. Ensure the question:
+    const prompt = `
+Generate a ${difficultyLevel} level question for round ${i} in the category of ${category}. Ensure the question:
 
-* Has a minimum of ${sizeWords} words.
-* Is **short and easy** for round 1, but **appropriate for the difficulty level** for subsequent rounds.
-* Focuses on the **technical aspects** of the topic.
-* Provides at least **2-3 lines** of context to guide users in formulating effective prompts.
-* Is **well-structured** and **concise**.
-* Avoids ambiguity or vagueness.
+* Contains a minimum of ${sizeWords} words.
+* Is **short and  Very easiest** for round 1 but **appropriate for the difficulty level** in subsequent  consecutive rounds.
+* Focuses on the ** easiest technical aspects** of the topic.
+* Includes **2 lines of context** to help users understand the topic and formulate in very effective  prompts.
+* Is **well-structured and organized **, **concise and to the point **, and engaging and attracting .
+* Avoids ambiguity or Tough words .
+
+In addition to technical questions, consider including prompts that guide users on creating compelling images using AI tools.
 
 **Example (for round 1, difficulty level "easy", category "programming"):**
 
@@ -64,7 +67,12 @@ exports.generateQuestions = async (req, res) => {
 
 **Example (for round 3, difficulty level "medium", category "data science"):**
 
-"Explain the concept of cross-validation in machine learning and describe its importance in model evaluation. Provide a code example in Python demonstrating how to implement k-fold cross-validation."`;
+"Explain the concept of cross-validation in machine learning and describe its importance in model evaluation. Provide a code example in Python demonstrating how to implement k-fold cross-validation."
+
+**Example for Image Generation:**
+
+"Create a prompt for an AI tool that generates an image of a futuristic cityscape at sunset, emphasizing vibrant colors and intricate architectural designs. Include details such as the skyline's silhouette and the atmosphere of the scene."
+`;
 
       const result = await model.generateContent(prompt);
       const text = result.response.text().trim();
@@ -99,7 +107,10 @@ exports.checkAnswer = async (req, res) => {
     const validationResult = await model.generateContent(validationPrompt);
     const validationText = validationResult.response.text().trim();
 
-    const optimalPromptQuery = `Generate an optimal prompt for the user based on the following question: "${question.questionText}". The user's prompt is: "${userPrompt}".`;
+  const optimalPromptQuery = `Generate multiple optimal prompts based on the following question: "${question.questionText}".
+Consider the user initial prompt: "${userPrompt}".
+Provide at least three variations, ensuring they are clear, concise, and tailored for AI tools. Each prompt should aim to elicit comprehensive and informative responses.`;
+
     const optimalPromptResult = await model.generateContent(optimalPromptQuery);
     const optimalPrompt = optimalPromptResult.response.text().trim();
 
